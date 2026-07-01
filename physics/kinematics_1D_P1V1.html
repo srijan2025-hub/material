@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Motion in 1D — Foundations | Physics | JEE Portal</title>
+  <link rel="stylesheet" href="../../assets/css/theme.css">
+  <script src="../../assets/js/common.js" defer></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body, {
+      delimiters: [
+        {left: '$$', right: '$$', display: true},
+        {left: '$', right: '$', display: false}
+      ]
+    });"></script>
+  <!-- SUBJECT: Physics | CHAPTER: Kinematics | TOPIC: Motion in 1D — Foundations | DATE: 2026-07-02 -->
+</head>
+<body>
+  <div class="progress-bar"></div>
+
+  <header class="topbar">
+    <div class="topbar-title">
+      <span class="g-chip"></span>
+      Motion in 1D — Foundations <span class="eyebrow">Kinematics · Physics</span>
+    </div>
+    <button class="theme-toggle" data-theme-toggle>
+      <span class="icon">🌙</span><span class="label">Night mode</span>
+    </button>
+  </header>
+
+  <nav class="tab-bar">
+    <button class="tab-btn" data-tab="revision">Short Revision</button>
+    <button class="tab-btn" data-tab="formulas">Formulas</button>
+    <button class="tab-btn" data-tab="analysis">Exam Analysis & Patterns</button>
+    <button class="tab-btn" data-tab="mistakes">Common Mistakes</button>
+  </nav>
+
+  <main class="page-shell">
+
+    <!-- ============================================================ -->
+    <!-- TAB 1: SHORT REVISION -->
+    <!-- ============================================================ -->
+    <section class="tab-panel" data-tab-panel="revision">
+
+      <h2>Core Formula Box</h2>
+      <div class="card card-formula">
+        <p>Average velocity: $$\vec{v}_{avg} = \dfrac{\Delta x}{\Delta t} = \dfrac{x_2 - x_1}{t_2 - t_1}$$</p>
+        <p>Average speed: $$\text{avg speed} = \dfrac{\text{total distance}}{\text{total time}}$$</p>
+        <p>Instantaneous velocity: $$v = \lim_{\Delta t \to 0}\dfrac{\Delta x}{\Delta t} = \dfrac{dx}{dt} = \text{slope of tangent on } x\text{-}t \text{ graph}$$</p>
+        <p>Instantaneous acceleration: $$a = \dfrac{dv}{dt} = \dfrac{d^2x}{dt^2} = \text{slope of tangent on } v\text{-}t \text{ graph}$$</p>
+        <p>Equations of motion (constant $a$ ONLY):
+          $$v = u + at \qquad s = ut + \tfrac{1}{2}at^2 \qquad v^2 = u^2 + 2as \qquad s_n = u + \dfrac{a}{2}(2n-1)$$</p>
+        <p>Area under $v$-$t$ graph = displacement (signed, can cancel). Sum of $|$areas$|$ = total distance.</p>
+      </div>
+
+      <h2>Key Concepts (max 15)</h2>
+      <ol>
+        <li>Distance is a scalar path length, always ≥ displacement magnitude; displacement is a vector, straight-line net change.</li>
+        <li>Average speed uses total distance; average velocity uses net displacement — they are equal only for straight-line, one-direction motion.</li>
+        <li>Round-trip trap: if a body returns to start, displacement = 0 → average velocity = 0, but average speed ≠ 0.</li>
+        <li>Instantaneous velocity is the limit of average velocity as $\Delta t \to 0$; it is the slope of the tangent, not the slope of a chord.</li>
+        <li>On an $x$-$t$ graph, a straight line ⇒ uniform velocity; a curve ⇒ velocity is changing (non-uniform motion).</li>
+        <li>For a curved $x$-$t$ graph, velocity at any instant = slope of the tangent drawn at that exact point, not the average slope of the whole curve.</li>
+        <li>Concave-up $x$-$t$ curve ⇒ increasing slope ⇒ positive acceleration. Concave-down ⇒ deceleration or reversing.</li>
+        <li>The three equations of motion apply ONLY when acceleration is constant (magnitude and direction both fixed).</li>
+        <li>Sign convention must be fixed before starting a problem: pick one direction positive, stick with it for $u$, $v$, $a$, $s$ throughout.</li>
+        <li>On a $v$-$t$ graph, slope = acceleration, and the graph is a straight line only for constant $a$.</li>
+        <li>Area under $v$-$t$ graph between two times = displacement in that interval (signed — area below the axis is negative).</li>
+        <li>When velocity changes sign (crosses the $t$-axis) on a $v$-$t$ graph, the body reverses direction: total distance = sum of absolute areas of each segment, but net displacement = algebraic sum.</li>
+        <li>To convert $x$-$t \to v$-$t$: read the slope at each point. To convert $v$-$t \to a$-$t$: read the slope at each point.</li>
+        <li>To convert $v$-$t \to x$-$t$: accumulate signed area (this is why area under $v$-$t$ is displacement, not distance, unless velocity never changes sign).</li>
+        <li>$s_n$ (distance in the $n^{th}$ second) is a discrete formula — only valid for constant acceleration, and gives distance covered during that one specific second, not the position.</li>
+      </ol>
+
+      <h2>Common Mistakes (top 5 — full detail in Tab 4)</h2>
+      <ul>
+        <li>Using displacement formulas when velocity changes sign mid-motion (forgetting to split at the reversal point).</li>
+        <li>Treating average speed and average velocity as always equal.</li>
+        <li>Reading the slope of a curved $x$-$t$ graph as if it were a straight line (using end-point slope instead of tangent at the point).</li>
+        <li>Applying $v=u+at$ etc. to a case where acceleration is not constant (e.g., $a$ depends on $t$, $x$, or $v$).</li>
+        <li>Losing track of sign convention halfway through a problem, especially after a direction reversal.</li>
+      </ul>
+
+      <div class="callout callout-shortcut">
+        <strong>Exam trick:</strong> Whenever a $v$-$t$ graph crosses the time axis, immediately mark that crossing time. Compute area separately above and below the axis. Distance = sum of magnitudes; Displacement = signed sum. This single habit prevents ~80% of sign-error losses in this topic.
+      </div>
+
+      <div class="callout callout-shortcut">
+        <strong>Exam trick:</strong> On a curved $x$-$t$ graph question, if asked for velocity "at $t = t_0$", draw the tangent only at that point — never join two distant points on the curve and call that slope the instantaneous velocity.
+      </div>
+
+      <h2>Memory Hooks</h2>
+      <ul>
+        <li><strong>"Distance is what the odometer reads, displacement is what the GPS reads."</strong></li>
+        <li><strong>SUVAT constant-a check:</strong> before writing any of the three equations, ask "is $a$ constant here?" — if no, go back to calculus ($v=dx/dt$, $a=dv/dt$).</li>
+        <li><strong>Slope-of-tangent, not slope-of-chord</strong> — say this out loud for every curved-graph velocity question.</li>
+      </ul>
+
+      <h2>5 Must-Do PYQs (answers only)</h2>
+      <div class="q-block">
+        <p><strong>Q1 (Practice question, style-matched, source unverified):</strong> A body travels from A to B at 40 km/h and returns from B to A at 60 km/h along the same straight path. Find average speed for the whole trip.</p>
+        <p><em>Answer:</em> 48 km/h (harmonic mean, since equal distances).</p>
+      </div>
+      <div class="q-block">
+        <p><strong>Q2 (Practice question, style-matched, source unverified):</strong> Position of a particle is $x = 2t^2 - 3t + 1$ (SI units). Find instantaneous velocity at $t=2\,s$.</p>
+        <p><em>Answer:</em> $v = 4t - 3 \Rightarrow v(2) = 5$ m/s.</p>
+      </div>
+      <div class="q-block">
+        <p><strong>Q3 (Practice question, style-matched, source unverified):</strong> A particle starts with $u = 10$ m/s and decelerates at $2\ \text{m/s}^2$. Find total distance covered in the first 12 s (it reverses direction).</p>
+        <p><em>Answer:</em> Stops at $t=5\,s$ after covering 25 m forward, then reverses for 7 s covering 49 m back ⇒ total distance = 74 m; displacement = 25 − 49 = −24 m.</p>
+      </div>
+      <div class="q-block">
+        <p><strong>Q4 (Practice question, style-matched, source unverified):</strong> An $x$-$t$ graph is a parabola opening upward. Is the particle's speed increasing or decreasing?</p>
+        <p><em>Answer:</em> Increasing — slope (velocity magnitude) grows steadily on an upward parabola, meaning constant positive acceleration.</p>
+      </div>
+      <div class="q-block">
+        <p><strong>Q5 (Practice question, style-matched, source unverified):</strong> A $v$-$t$ graph shows velocity going from +6 m/s to −4 m/s linearly over 5 s. Find both total distance and net displacement.</p>
+        <p><em>Answer:</em> Crosses zero at $t=3\,s$. Area(0–3s) = ½·3·6 = 9 m; Area(3–5s) = ½·2·4 = −4 m. Distance = 9+4 = 13 m; Displacement = 9−4 = 5 m.</p>
+      </div>
+
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- TAB 2: FORMULAS -->
+    <!-- ============================================================ -->
+    <section class="tab-panel" data-tab-panel="formulas">
+
+      <div class="card card-formula">
+        <p class="formula-main">$$\vec{v}_{avg} = \dfrac{\Delta \vec{x}}{\Delta t}$$</p>
+        <div class="field-row"><strong>$\Delta \vec{x}$</strong>: net displacement (vector)</div>
+        <div class="field-row"><strong>$\Delta t$</strong>: total time elapsed</div>
+        <p><strong>When to use:</strong> any time you need average velocity over an interval, regardless of whether motion is uniform.</p>
+        <p><strong>Don't confuse with:</strong> average speed (uses distance, a scalar, in the numerator).</p>
+        <p><strong>Derivation logic:</strong> direct definition — net change in position over elapsed time.</p>
+      </div>
+
+      <div class="card card-formula">
+        <p class="formula-main">$$\text{avg speed} = \dfrac{\text{total path length}}{\Delta t}$$</p>
+        <div class="field-row"><strong>total path length</strong>: sum of all distances traveled, direction ignored</div>
+        <p><strong>When to use:</strong> whenever the path is not a straight one-directional line (round trips, reversals).</p>
+        <p><strong>Don't confuse with:</strong> average velocity — equal only if motion never reverses direction.</p>
+        <p><strong>Derivation logic:</strong> scalar analogue of average velocity; distance replaces displacement.</p>
+      </div>
+
+      <div class="card card-formula">
+        <p class="formula-main">$$v = \dfrac{dx}{dt}$$</p>
+        <div class="field-row"><strong>$v$</strong>: instantaneous velocity</div>
+        <div class="field-row"><strong>graphically</strong>: slope of the tangent to the $x$-$t$ curve at that instant</div>
+        <p><strong>When to use:</strong> velocity "at an instant" or "at a point" — especially for curved (non-uniform motion) $x$-$t$ graphs.</p>
+        <p><strong>Don't confuse with:</strong> average velocity, which is slope of the chord joining two points, not the tangent at one point.</p>
+        <p><strong>Derivation logic:</strong> limit of $\Delta x/\Delta t$ as $\Delta t \to 0$.</p>
+      </div>
+
+      <div class="card card-formula">
+        <p class="formula-main">$$a = \dfrac{dv}{dt} = \dfrac{d^2x}{dt^2}$$</p>
+        <div class="field-row"><strong>graphically</strong>: slope of tangent to $v$-$t$ curve</div>
+        <p><strong>When to use:</strong> instantaneous acceleration, especially when $a$ itself is not constant.</p>
+        <p><strong>Don't confuse with:</strong> average acceleration = $\Delta v/\Delta t$ over a finite interval.</p>
+        <p><strong>Derivation logic:</strong> rate of change of velocity; second derivative of position.</p>
+      </div>
+
+      <div class="card card-formula">
+        <p class="formula-main">$$v = u + at$$</p>
+        <div class="field-row"><strong>$u,v$</strong>: initial, final velocity</div>
+        <div class="field-row"><strong>$a$</strong>: constant acceleration</div>
+        <p><strong>Condition:</strong> $a$ must be constant in both magnitude and direction over the interval.</p>
+        <p><strong>Don't confuse with:</strong> using it when $a = f(t)$ or $a = f(v)$ — must integrate instead.</p>
+        <p><strong>Derivation logic:</strong> direct integration of $a = dv/dt$ with constant $a$.</p>
+      </div>
+
+      <div class="card card-formula">
+        <p class="formula-main">$$s = ut + \tfrac{1}{2}at^2$$</p>
+        <div class="field-row"><strong>$s$</strong>: displacement in time $t$</div>
+        <p><strong>Condition:</strong> constant $a$; $s$ is signed (can be negative if net motion is backward).</p>
+        <p><strong>Don't confuse with:</strong> distance travelled when the body reverses direction within time $t$ — this formula gives net displacement only.</p>
+        <p><strong>Derivation logic:</strong> integrate $v=u+at$ with respect to $t$.</p>
+      </div>
+
+      <div class="card card-formula">
+        <p class="formula-main">$$v^2 = u^2 + 2as$$</p>
+        <p><strong>Condition:</strong> constant $a$; useful when time is not given/needed.</p>
+        <p><strong>Don't confuse with:</strong> applying it across a direction reversal without splitting the motion into segments.</p>
+        <p><strong>Derivation logic:</strong> eliminate $t$ between $v=u+at$ and $s=ut+\tfrac12at^2$.</p>
+      </div>
+
+      <div class="card card-formula">
+        <p class="formula-main">$$s_n = u + \dfrac{a}{2}(2n-1)$$</p>
+        <div class="field-row"><strong>$s_n$</strong>: distance covered in the $n^{th}$ second (not total distance up to $n$ seconds)</div>
+        <p><strong>Condition:</strong> constant $a$, $n$ is an integer.</p>
+        <p><strong>Don't confuse with:</strong> $s = ut+\tfrac12at^2$, which gives position/displacement up to time $t$, not distance in one specific second.</p>
+        <p><strong>Derivation logic:</strong> $s_n = s(n) - s(n-1)$.</p>
+      </div>
+
+      <div class="card card-formula">
+        <p class="formula-main">$$\text{Area under } v\text{-}t \text{ curve} = \int v\,dt = \Delta x$$</p>
+        <p><strong>When to use:</strong> converting a $v$-$t$ graph into displacement or distance.</p>
+        <p><strong>Don't confuse with:</strong> if $v$ changes sign, the signed area gives displacement; the sum of absolute areas of each sign-segment gives distance.</p>
+        <p><strong>Derivation logic:</strong> definite integral of velocity is the fundamental theorem of calculus applied to $v=dx/dt$.</p>
+      </div>
+
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- TAB 3: EXAM ANALYSIS & PATTERNS -->
+    <!-- ============================================================ -->
+    <section class="tab-panel" data-tab-panel="analysis">
+
+      <h2>Question Type Classification</h2>
+      <table>
+        <thead>
+          <tr><th>Type</th><th>Frequency</th><th>Favored by</th><th>Concept tested</th><th>Difficulty</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Round-trip avg speed/velocity</td><td>High</td><td><span class="tag-mains">Mains</span> <span class="tag-wbjee">WBJEE</span></td><td>Distance vs displacement</td><td><span class="tag-easy">Easy</span></td></tr>
+          <tr><td>Read velocity from curved x-t graph</td><td>Medium</td><td><span class="tag-adv">Advanced</span></td><td>Tangent slope, non-uniform motion</td><td><span class="tag-medium">Medium</span></td></tr>
+          <tr><td>Distance vs displacement from v-t graph (sign change)</td><td>High</td><td><span class="tag-mains">Mains</span> <span class="tag-adv">Advanced</span> <span class="tag-wbjee">WBJEE</span></td><td>Signed area vs absolute area</td><td><span class="tag-medium">Medium</span></td></tr>
+          <tr><td>Direct SUVAT plug-in</td><td>High</td><td><span class="tag-wbjee">WBJEE</span></td><td>Constant-a equations</td><td><span class="tag-easy">Easy</span></td></tr>
+          <tr><td>Multi-stage motion (accelerate then decelerate)</td><td>Medium</td><td><span class="tag-adv">Advanced</span></td><td>Splitting motion at reversal/junction points</td><td><span class="tag-hard">Hard</span></td></tr>
+          <tr><td>Graph-to-graph conversion (x-t → v-t → a-t)</td><td>Medium</td><td><span class="tag-adv">Advanced</span></td><td>Differentiation via slope reading</td><td><span class="tag-hard">Hard</span></td></tr>
+        </tbody>
+      </table>
+
+      <h2>Mains vs Advanced vs WBJEE</h2>
+      <table>
+        <thead><tr><th></th><th>JEE Mains</th><th>JEE Advanced</th><th>WBJEE</th></tr></thead>
+        <tbody>
+          <tr><td>Style</td><td>Direct formula plug-in, 1 concept/question</td><td>Multi-concept, graph-heavy, often needs a sign-convention trap</td><td>Direct, occasionally graph-based</td></tr>
+          <tr><td>Graphs</td><td>Simple straight-line v-t or x-t</td><td>Curved/piecewise graphs, tangent-reading</td><td>Mostly straight-line graphs</td></tr>
+          <tr><td>Common trap used</td><td>Round-trip avg speed</td><td>Sign change in v-t area (distance vs displacement)</td><td>Direct numeric SUVAT</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Solved Pattern Examples</h2>
+
+      <div class="card">
+        <h3>Pattern: Curved x-t graph — instantaneous velocity at a point</h3>
+        <p><strong>Practice question (style-matched, source unverified):</strong> Position of a particle is given by $x = t^3 - 6t^2 + 9t$ (m, s). Find its velocity at $t=1\,s$ and state whether it is speeding up or slowing down.</p>
+        <p><strong>Step 1 — differentiate to get v(t):</strong> $v = \dfrac{dx}{dt} = 3t^2 - 12t + 9$. <em>Why:</em> the x-t graph here is curved (cubic), so velocity is the slope of the tangent at each instant, not a single average slope — we must differentiate, not just divide $\Delta x/\Delta t$.</p>
+        <p><strong>Step 2 — evaluate at t=1:</strong> $v(1) = 3-12+9 = 0$ m/s. <em>Why:</em> this is a specific instant, so we plug $t=1$ into the tangent-slope function, not into a chord between two far-apart points.</p>
+        <p><strong>Step 3 — find acceleration to judge speeding up/slowing down:</strong> $a = dv/dt = 6t-12 \Rightarrow a(1) = -6\ \text{m/s}^2$. <em>Why:</em> since $v=0$ at this instant and $a\ne0$, the particle is momentarily at rest and about to reverse — this is the graph's turning point.</p>
+      </div>
+
+      <div class="card">
+        <h3>Pattern: v-t graph with sign change — distance vs displacement</h3>
+        <p><strong>Practice question (style-matched, source unverified):</strong> A particle's velocity varies as: $+8$ m/s at $t=0$, decreasing linearly to $-6$ m/s at $t=7\,s$. Find total distance and net displacement over 7 s.</p>
+        <p><strong>Step 1 — find when v=0:</strong> slope $= \dfrac{-6-8}{7} = -2\ \text{m/s}^2$. $v(t) = 8-2t = 0 \Rightarrow t=4\,s$. <em>Why:</em> this is the reversal point — the graph crosses the time axis here, so distance and displacement calculations must be split at this instant.</p>
+        <p><strong>Step 2 — area from 0 to 4s (positive region):</strong> triangle, $\tfrac12 \times 4 \times 8 = 16$ m. <em>Why:</em> this is genuine forward distance since velocity stayed positive throughout this segment.</p>
+        <p><strong>Step 3 — area from 4 to 7s (negative region):</strong> triangle, $\tfrac12 \times 3 \times 6 = 9$ m, but this area is below the axis so it is $-9$ m in displacement terms. <em>Why:</em> negative velocity means the particle is moving backward — this segment reduces net displacement but adds to total distance.</p>
+        <p><strong>Step 4 — combine:</strong> Total distance $= 16+9 = 25$ m. Net displacement $= 16-9 = 7$ m. <em>Why:</em> distance sums magnitudes of every segment; displacement algebraically sums signed areas — this is exactly the trap examiners test.</p>
+      </div>
+
+      <h2>High-Yield Sub-topics (priority order)</h2>
+      <ol>
+        <li><strong>Distance vs displacement / avg speed vs avg velocity</strong> — appears almost every year across all three exams, easy marks if the round-trip trap is internalized.</li>
+        <li><strong>v-t graph area with sign change</strong> — very high yield, moderate difficulty, the single biggest mark-loser in this topic if not practiced.</li>
+        <li><strong>SUVAT equations (constant a)</strong> — foundational, feeds directly into projectile motion and later chapters.</li>
+        <li><strong>x-t graph slope reading (uniform and curved)</strong> — essential prerequisite for Advanced-level multi-graph questions.</li>
+        <li><strong>Graph inter-conversion (x-t ↔ v-t ↔ a-t)</strong> — lower frequency alone but underlies almost every Advanced kinematics problem.</li>
+      </ol>
+
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- TAB 4: COMMON MISTAKES -->
+    <!-- ============================================================ -->
+    <section class="tab-panel" data-tab-panel="mistakes">
+
+      <div class="card card-mistake">
+        <h3>1. Treating average speed = average velocity by default</h3>
+        <p><strong>Looks like:</strong> student computes $\Delta x / \Delta t$ and calls it "average speed."</p>
+        <p><strong>Why it happens:</strong> in single-direction motion the two are numerically equal, so the distinction gets forgotten until a round-trip problem appears.</p>
+        <p><strong>Correct version:</strong> always ask "did the path double back?" If yes, compute distance and displacement separately.</p>
+        <p><strong>Trips up:</strong> Mains, WBJEE (direct-plug questions with a hidden round trip).</p>
+      </div>
+
+      <div class="card card-mistake">
+        <h3>2. Using the two-point chord slope as "instantaneous velocity" on a curved x-t graph</h3>
+        <p><strong>Looks like:</strong> student picks two points on a curved graph, computes $\Delta x/\Delta t$ between them, and reports it as velocity "at" one of those points.</p>
+        <p><strong>Why it happens:</strong> works fine for straight-line (uniform motion) graphs, and the habit carries over incorrectly to curves.</p>
+        <p><strong>Correct version:</strong> instantaneous velocity is the tangent slope at that single point; for a curve, differentiate $x(t)$ or draw the tangent geometrically.</p>
+        <p><strong>Trips up:</strong> Advanced (graph-heavy, curved x-t questions).</p>
+      </div>
+
+      <div class="card card-mistake">
+        <h3>3. Applying SUVAT equations when acceleration is not constant</h3>
+        <p><strong>Looks like:</strong> student uses $v=u+at$ even though $a$ is given as a function of $t$, $x$, or $v$.</p>
+        <p><strong>Why it happens:</strong> SUVAT is memorized as "the" motion formula without checking the constant-a condition first.</p>
+        <p><strong>Correct version:</strong> if $a$ is variable, go back to $v=dx/dt$, $a=dv/dt$ and integrate/differentiate directly.</p>
+        <p><strong>Trips up:</strong> Advanced (frequently sets variable-a traps).</p>
+      </div>
+
+      <div class="card card-mistake">
+        <h3>4. Treating area under v-t graph as distance even when velocity changes sign</h3>
+        <p><strong>Looks like:</strong> student computes one big triangle/trapezoid area across a sign change and reports it as "total distance."</p>
+        <p><strong>Why it happens:</strong> the "area = distance" shortcut is true for one-directional motion, and the reversal case isn't flagged.</p>
+        <p><strong>Correct version:</strong> split the graph at every point where $v=0$ (axis crossing); sum absolute areas for distance, signed areas for displacement.</p>
+        <p><strong>Trips up:</strong> Mains, Advanced, WBJEE — this is the single most-tested trap in the whole topic.</p>
+      </div>
+
+      <div class="card card-mistake">
+        <h3>5. Losing sign convention after a direction reversal</h3>
+        <p><strong>Looks like:</strong> student flips the sign of velocity after reversal but forgets to also check the sign of acceleration/displacement consistently.</p>
+        <p><strong>Why it happens:</strong> no single fixed positive direction was chosen at the start of the problem.</p>
+        <p><strong>Correct version:</strong> fix one direction as positive before writing a single equation, and never change it mid-solution — represent reversal only through the sign of $v$, not by redefining axes.</p>
+        <p><strong>Trips up:</strong> all three exams, especially multi-stage motion problems.</p>
+      </div>
+
+      <div class="card card-mistake">
+        <h3>6. Confusing $s_n$ (distance in nth second) with $s$ up to time $n$</h3>
+        <p><strong>Looks like:</strong> student uses $s = ut+\tfrac12at^2$ with $t=n$ when the question actually asks for distance covered during the $n^{th}$ second only.</p>
+        <p><strong>Why it happens:</strong> surface similarity between the two formulas and quantities.</p>
+        <p><strong>Correct version:</strong> use $s_n = u + \tfrac{a}{2}(2n-1)$ specifically for "distance in the nth second" questions.</p>
+        <p><strong>Trips up:</strong> WBJEE, Mains (direct formula-recall questions).</p>
+      </div>
+
+      <div class="card card-mistake">
+        <h3>7. Misreading concavity on an x-t graph</h3>
+        <p><strong>Looks like:</strong> student assumes a curving x-t graph always means increasing speed, regardless of concavity direction.</p>
+        <p><strong>Why it happens:</strong> not connecting "rate of change of slope" (second derivative) to concavity visually.</p>
+        <p><strong>Correct version:</strong> concave-up (opening upward) with increasing slope ⇒ speeding up in positive direction; concave-down flattening slope ⇒ decelerating; slope becoming negative ⇒ reversal.</p>
+        <p><strong>Trips up:</strong> Advanced (graph interpretation without explicit equations).</p>
+      </div>
+
+      <div class="card card-mistake">
+        <h3>8. Forgetting that displacement can be negative but distance never can</h3>
+        <p><strong>Looks like:</strong> student reports a negative value as "distance travelled."</p>
+        <p><strong>Why it happens:</strong> carrying over the signed result from a displacement/area calculation without taking magnitude.</p>
+        <p><strong>Correct version:</strong> distance is always reported as a positive scalar; only displacement retains sign.</p>
+        <p><strong>Trips up:</strong> Mains, WBJEE (numeric-answer questions where sign errors cost the mark).</p>
+      </div>
+
+    </section>
+
+  </main>
+</body>
+</html>
