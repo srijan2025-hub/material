@@ -1,0 +1,369 @@
+/* ==========================================================================
+   JEE PORTAL — SHARED THEME
+   One file, linked from every chapter page. Change a variable here,
+   every page updates. Do not inline overrides in chapter files.
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap');
+
+/* ---------- 1. TOKENS ---------- */
+
+:root{
+  /* Google brand colors — used ONLY as a static gradient/accent system, never as flat fills */
+  --g-blue:   #4285F4;
+  --g-red:    #EA4335;
+  --g-yellow: #FBBC05;
+  --g-green:  #34A853;
+
+  /* the one signature: a fixed (non-animated) 4-stop gradient */
+  --g-gradient: linear-gradient(90deg, var(--g-blue) 0%, var(--g-green) 38%, var(--g-yellow) 68%, var(--g-red) 100%);
+
+  /* semantic colors — same meaning in both modes, values swap per mode below */
+  --c-definition: var(--g-blue);
+  --c-formula:    var(--g-yellow);
+  --c-mistake:    var(--g-red);
+  --c-trick:      var(--g-green);
+
+  --radius-s: 8px;
+  --radius-m: 14px;
+  --radius-l: 20px;
+
+  --shadow-1: 0 1px 2px rgba(30,25,15,0.06), 0 1px 1px rgba(30,25,15,0.04);
+  --shadow-2: 0 4px 16px rgba(30,25,15,0.08);
+
+  --font-display: 'Sora', 'Segoe UI', sans-serif;
+  --font-body: 'Inter', 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --transition-fast: 150ms ease;
+  --transition-mode: 300ms ease;
+}
+
+/* ---------- DAY MODE (default) — warm cream ---------- */
+:root,
+[data-theme="day"]{
+  --bg-page:      #FAF6ED;
+  --bg-surface:   #FFFFFF;
+  --bg-surface-2: #F3EEE1;
+  --bg-sidebar:   #F5F0E4;
+  --bg-code:      #EFE9D8;
+
+  --text-primary:   #2A251C;
+  --text-secondary: #6B6353;
+  --text-muted:     #9A917C;
+
+  --border-soft: #E6DFCC;
+  --border-strong: #D6CCAF;
+
+  --tab-inactive-bg: #F0EADB;
+}
+
+/* ---------- NIGHT MODE — deep, low-glare ---------- */
+[data-theme="night"]{
+  --bg-page:      #14151A;
+  --bg-surface:   #1B1D24;
+  --bg-surface-2: #21232B;
+  --bg-sidebar:   #191A20;
+  --bg-code:      #24262F;
+
+  --text-primary:   #ECE9E1;
+  --text-secondary: #A6A296;
+  --text-muted:     #706C60;
+
+  --border-soft: #2C2E38;
+  --border-strong: #383B47;
+
+  --tab-inactive-bg: #1E2027;
+
+  /* slightly desaturated accents at night so they don't glare */
+  --c-definition: #6FA0F7;
+  --c-formula:    #F4C846;
+  --c-mistake:    #F16C60;
+  --c-trick:      #52C285;
+}
+
+/* ---------- 2. RESET / BASE ---------- */
+
+*,*::before,*::after{ box-sizing: border-box; }
+html{ scroll-behavior: smooth; }
+
+body{
+  margin: 0;
+  background: var(--bg-page);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  transition: background var(--transition-mode), color var(--transition-mode);
+}
+
+h1,h2,h3,h4{
+  font-family: var(--font-display);
+  color: var(--text-primary);
+  line-height: 1.25;
+  margin: 0 0 0.5em;
+}
+h1{ font-size: 1.9rem; font-weight: 800; }
+h2{ font-size: 1.4rem; font-weight: 700; }
+h3{ font-size: 1.1rem; font-weight: 600; }
+
+p{ margin: 0 0 1em; color: var(--text-primary); }
+code, .mono{ font-family: var(--font-mono); font-size: 0.85em; }
+
+a{ color: var(--c-definition); text-decoration: none; }
+a:hover{ text-decoration: underline; }
+
+::selection{ background: var(--c-formula); color: #1A1A1A; }
+
+/* visible keyboard focus everywhere */
+a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
+  outline: 2px solid var(--g-blue);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{ animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+
+/* ---------- 3. LAYOUT SHELL ---------- */
+
+.page-shell{
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 20px 64px;
+}
+
+/* top progress bar — fixed gradient fill, width driven by JS */
+.progress-bar{
+  position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+  background: var(--g-gradient);
+  z-index: 1000;
+  transition: width 80ms linear;
+}
+
+/* ---------- 4. HEADER / TOP BAR ---------- */
+
+.topbar{
+  position: sticky; top: 0; z-index: 900;
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border-soft);
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px;
+  padding: 14px 20px;
+}
+
+.topbar-title{
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  display: flex; align-items: center; gap: 10px;
+}
+
+.topbar-title .eyebrow{
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+/* the gradient chip — signature element, reused as active-state marker everywhere */
+.g-chip{
+  width: 10px; height: 10px; border-radius: 3px;
+  background: var(--g-gradient);
+  flex-shrink: 0;
+}
+
+/* ---------- 5. THEME TOGGLE ---------- */
+
+.theme-toggle{
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--bg-surface-2);
+  border: 1px solid var(--border-soft);
+  border-radius: 999px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  transition: background var(--transition-fast), border-color var(--transition-fast);
+}
+.theme-toggle:hover{ border-color: var(--border-strong); }
+.theme-toggle .icon{ font-size: 0.95rem; line-height: 1; }
+
+/* ---------- 6. TAB BAR (Short Revision / Formulas / Exam Analysis / Mistakes) ---------- */
+
+.tab-bar{
+  position: sticky; top: 57px; z-index: 850;
+  display: flex; gap: 4px;
+  background: var(--bg-page);
+  border-bottom: 1px solid var(--border-soft);
+  padding: 10px 20px 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.tab-bar::-webkit-scrollbar{ display:none; }
+
+.tab-btn{
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  background: var(--tab-inactive-bg);
+  border: 1px solid var(--border-soft);
+  border-bottom: none;
+  padding: 10px 16px;
+  border-radius: var(--radius-s) var(--radius-s) 0 0;
+  cursor: pointer;
+  white-space: nowrap;
+  position: relative;
+  top: 1px;
+  transition: color var(--transition-fast), background var(--transition-fast);
+}
+.tab-btn:hover{ color: var(--text-primary); }
+
+.tab-btn.active{
+  color: var(--text-primary);
+  background: var(--bg-surface);
+  border-color: var(--border-soft);
+}
+.tab-btn.active::after{
+  content: "";
+  position: absolute; left: 0; right: 0; bottom: -1px; height: 3px;
+  background: var(--g-gradient);
+  border-radius: 2px 2px 0 0;
+}
+
+.tab-panel{ display: none; padding-top: 28px; }
+.tab-panel.active{ display: block; }
+
+/* ---------- 7. CARDS (formula / mistake / trick / definition) ---------- */
+
+.card{
+  background: var(--bg-surface);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-m);
+  padding: 16px 18px;
+  margin-bottom: 14px;
+  box-shadow: var(--shadow-1);
+}
+
+.card-formula{ border-left: 4px solid var(--c-formula); }
+.card-mistake{ border-left: 4px solid var(--c-mistake); background: color-mix(in srgb, var(--c-mistake) 6%, var(--bg-surface)); }
+.card-trick{ border-left: 4px solid var(--c-trick); }
+.card-definition{ border-left: 4px solid var(--c-definition); }
+
+.card-label{
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  display: flex; align-items: center; gap: 6px;
+}
+.card-label.formula{ color: var(--c-formula); }
+.card-label.mistake{ color: var(--c-mistake); }
+.card-label.trick{ color: var(--c-trick); }
+.card-label.definition{ color: var(--c-definition); }
+
+.formula-main{
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  font-weight: 500;
+  background: var(--bg-code);
+  border-radius: var(--radius-s);
+  padding: 10px 12px;
+  margin-bottom: 10px;
+  overflow-x: auto;
+}
+
+.field-row{ font-size: 0.88rem; color: var(--text-secondary); margin: 4px 0; }
+.field-row b{ color: var(--text-primary); font-weight: 600; }
+
+/* ---------- 8. CALLOUTS (JEE TRAP / SHORTCUT) ---------- */
+
+.callout{
+  border-radius: var(--radius-s);
+  padding: 12px 14px;
+  margin: 14px 0;
+  font-size: 0.92rem;
+  display: flex; gap: 10px; align-items: flex-start;
+  border: 1px solid var(--border-soft);
+}
+.callout-trap{ background: color-mix(in srgb, var(--c-mistake) 8%, var(--bg-surface)); border-color: color-mix(in srgb, var(--c-mistake) 30%, var(--border-soft)); }
+.callout-shortcut{ background: color-mix(in srgb, var(--c-trick) 8%, var(--bg-surface)); border-color: color-mix(in srgb, var(--c-trick) 30%, var(--border-soft)); }
+.callout .icon{ font-size: 1.1rem; flex-shrink: 0; }
+
+/* ---------- 9. TABLES ---------- */
+
+table{ width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.9rem; }
+th{
+  font-family: var(--font-display);
+  text-align: left;
+  padding: 10px 12px;
+  background: var(--bg-surface-2);
+  border-bottom: 2px solid var(--border-strong);
+  font-weight: 700;
+}
+td{ padding: 10px 12px; border-bottom: 1px solid var(--border-soft); }
+tr:hover td{ background: var(--bg-surface-2); }
+
+/* ---------- 10. DIFFICULTY / EXAM TAGS ---------- */
+
+.tag{
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 999px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+.tag-mains{ background: color-mix(in srgb, var(--g-blue) 15%, transparent); color: var(--c-definition); }
+.tag-adv{ background: color-mix(in srgb, var(--g-red) 15%, transparent); color: var(--c-mistake); }
+.tag-wbjee{ background: color-mix(in srgb, var(--g-green) 15%, transparent); color: var(--c-trick); }
+.tag-easy{ background: color-mix(in srgb, var(--g-green) 15%, transparent); color: var(--c-trick); }
+.tag-medium{ background: color-mix(in srgb, var(--g-yellow) 20%, transparent); color: #9A6A00; }
+[data-theme="night"] .tag-medium{ color: var(--c-formula); }
+.tag-hard{ background: color-mix(in srgb, var(--g-red) 15%, transparent); color: var(--c-mistake); }
+
+/* ---------- 11. PYQ / QUESTION BLOCKS ---------- */
+
+.q-block{
+  background: var(--bg-surface);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-m);
+  padding: 14px 16px;
+  margin-bottom: 12px;
+}
+.q-meta{ display: flex; gap: 6px; margin-bottom: 8px; flex-wrap: wrap; }
+.q-answer{
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--border-soft);
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+}
+
+/* ---------- 12. PRINT ---------- */
+
+@media print{
+  .topbar, .tab-bar, .progress-bar, .theme-toggle{ display: none !important; }
+  .tab-panel{ display: block !important; }
+  body{ background: #fff; color: #000; }
+  .card{ box-shadow: none; break-inside: avoid; }
+}
+
+/* ---------- 13. RESPONSIVE ---------- */
+
+@media (max-width: 640px){
+  .page-shell{ padding: 0 14px 48px; }
+  h1{ font-size: 1.5rem; }
+  .tab-btn{ padding: 9px 12px; font-size: 0.82rem; }
+  .topbar-title{ font-size: 0.95rem; }
+}
