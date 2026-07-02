@@ -14,7 +14,7 @@ const topics = [
 
 {
 title:"Kinematics Part 1",
-link:"kinematics1.html",
+link:"kinematics_1D_P1V1.html",
 icon:"🚀",
 description:"Motion in One Dimension"
 },
