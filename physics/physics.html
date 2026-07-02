@@ -1,378 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Physics — Prep Portal</title>
-<meta name="description" content="Chapter-wise Physics notes for JEE Mains, JEE Advanced and WBJEE 2027.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --blue:#4285F4;   --blue-tint:#e8f0fe;
-    --red:#EA4335;    --red-tint:#fce8e6;
-    --yellow:#F9AB00; --yellow-tint:#fef3e0;
-    --green:#34A853;  --green-tint:#e6f4ea;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    --bg:#FFFFFF;
-    --surface:#F8F9FA;
-    --surface-raised:#FFFFFF;
-    --text:#202124;
-    --text-muted:#5F6368;
-    --text-faint:#80868B;
-    --border:#DADCE0;
-    --shadow-1:0 1px 2px 0 rgba(60,64,67,.30), 0 1px 3px 1px rgba(60,64,67,.15);
-    --shadow-2:0 2px 6px 0 rgba(60,64,67,.20), 0 8px 20px -4px rgba(60,64,67,.20);
-    --shadow-3:0 4px 12px 0 rgba(60,64,67,.18), 0 16px 32px -8px rgba(60,64,67,.24);
-    --radius-lg:22px;
-    --radius-md:14px;
-    --ease:cubic-bezier(.2,.8,.2,1);
-  }
+    <title>Physics | Learn Physics</title>
 
-  [data-theme="dark"]{
-    --bg:#131314;
-    --surface:#1E1F20;
-    --surface-raised:#1F2023;
-    --text:#E8EAED;
-    --text-muted:#9AA0A6;
-    --text-faint:#80868B;
-    --border:#37393B;
-    --blue-tint:#1c2b42; --red-tint:#3a2320; --yellow-tint:#3a2d10; --green-tint:#17301f;
-    --shadow-1:0 1px 2px 0 rgba(0,0,0,.55), 0 1px 3px 1px rgba(0,0,0,.35);
-    --shadow-2:0 2px 6px 0 rgba(0,0,0,.45), 0 8px 20px -4px rgba(0,0,0,.5);
-    --shadow-3:0 4px 14px 0 rgba(0,0,0,.5), 0 20px 40px -10px rgba(0,0,0,.6);
-  }
+    <link rel="stylesheet" href="physics.css">
 
-  *{ box-sizing:border-box; }
-  html{ scroll-behavior:smooth; }
-  ::selection{ background:var(--blue); color:#fff; }
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  body{
-    margin:0;
-    font-family:'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
-    background:var(--bg);
-    color:var(--text);
-    transition:background .3s ease, color .3s ease;
-    -webkit-font-smoothing:antialiased;
-  }
-
-  a{ color:inherit; text-decoration:none; }
-  .mono{ font-family:'Roboto Mono', monospace; }
-  .wrap{ max-width:1140px; margin:0 auto; padding:0 24px; }
-
-  /* ================= Header ================= */
-  header{
-    position:sticky; top:0; z-index:50;
-    background:color-mix(in srgb, var(--bg) 86%, transparent);
-    backdrop-filter:blur(14px) saturate(1.6);
-    -webkit-backdrop-filter:blur(14px) saturate(1.6);
-    border-bottom:1px solid var(--border);
-  }
-  .header-inner{ display:flex; align-items:center; justify-content:space-between; padding:15px 0; gap:20px; }
-  .brand{ display:flex; align-items:center; gap:11px; flex-shrink:0; }
-  .brand-dots{ display:flex; gap:4px; }
-  .brand-dots span{ width:9px; height:9px; border-radius:50%; display:inline-block; animation:bounce 1.5s ease-in-out infinite; }
-  .brand-dots span:nth-child(1){ background:var(--blue); animation-delay:0s; }
-  .brand-dots span:nth-child(2){ background:var(--red); animation-delay:.13s; }
-  .brand-dots span:nth-child(3){ background:var(--yellow); animation-delay:.26s; }
-  .brand-dots span:nth-child(4){ background:var(--green); animation-delay:.39s; }
-  @keyframes bounce{ 0%,60%,100%{ transform:translateY(0); } 30%{ transform:translateY(-5px); } }
-  @media (prefers-reduced-motion:reduce){ .brand-dots span, .orbit-dot{ animation:none !important; } }
-  .brand-name{ font-weight:700; font-size:18.5px; letter-spacing:-.2px; white-space:nowrap; }
-  .brand-name .accent{ color:var(--blue); }
-
-  nav{ display:flex; align-items:center; gap:22px; flex-shrink:0; }
-  nav a.navlink{ font-size:14px; font-weight:500; color:var(--text-muted); padding:6px 1px; border-bottom:2px solid transparent; transition:color .18s ease, border-color .18s ease; }
-  nav a.navlink:hover{ color:var(--text); }
-  nav a.navlink.active{ color:var(--blue); border-color:var(--blue); }
-
-  .theme-toggle{
-    display:flex; align-items:center; justify-content:center;
-    width:38px; height:38px; border-radius:50%;
-    border:1px solid var(--border); background:var(--surface);
-    cursor:pointer; color:var(--text);
-    transition:background .18s ease, transform .15s ease, border-color .18s ease;
-  }
-  .theme-toggle:hover{ background:var(--surface-raised); border-color:var(--blue); }
-  .theme-toggle:active{ transform:scale(.92); }
-  .theme-toggle svg{ width:17px; height:17px; }
-  .theme-toggle .icon-sun{ display:none; }
-  [data-theme="dark"] .theme-toggle .icon-moon{ display:none; }
-  [data-theme="dark"] .theme-toggle .icon-sun{ display:block; }
-
-  /* ================= Hero ================= */
-  .hero-shell{ position:relative; overflow:hidden; }
-  .hero-glow{
-    position:absolute; top:0; left:0; right:0; height:420px; z-index:0; pointer-events:none;
-    background:
-      linear-gradient(115deg,
-        color-mix(in srgb, var(--blue) 30%, transparent) 0%,
-        color-mix(in srgb, var(--red) 22%, transparent) 28%,
-        color-mix(in srgb, var(--yellow) 22%, transparent) 55%,
-        color-mix(in srgb, var(--green) 26%, transparent) 82%,
-        transparent 100%);
-    -webkit-mask-image:linear-gradient(to bottom, black 0%, black 30%, transparent 100%);
-    mask-image:linear-gradient(to bottom, black 0%, black 30%, transparent 100%);
-    filter:blur(60px);
-    opacity:.55;
-  }
-  [data-theme="dark"] .hero-glow{ opacity:.35; }
-  .hero{ position:relative; z-index:1; padding:56px 0 34px; }
-  .breadcrumb{ font-size:13px; color:var(--text-muted); margin-bottom:22px; display:flex; align-items:center; gap:6px; }
-  .breadcrumb a{ color:var(--text-muted); transition:color .15s ease; }
-  .breadcrumb a:hover{ color:var(--blue); }
-
-  .hero-row{ display:flex; align-items:flex-start; gap:22px; }
-
-  .orbit{ flex-shrink:0; width:64px; height:64px; display:flex; align-items:center; justify-content:center; }
-  .orbit svg{ width:64px; height:64px; overflow:visible; }
-  .orbit .nucleus{ fill:var(--blue); }
-  .orbit .ring{ fill:none; stroke:var(--border); stroke-width:1.4; }
-  .orbit-dot{ animation:orbit-spin 6s linear infinite; transform-origin:32px 32px; }
-  @keyframes orbit-spin{ from{ transform:rotate(0deg);} to{ transform:rotate(360deg);} }
-
-  h1.page-title{ font-size:clamp(32px,4.8vw,46px); font-weight:900; letter-spacing:-1.2px; margin:2px 0 8px; line-height:1.02; }
-  .page-sub{ font-size:15.5px; color:var(--text-muted); max-width:600px; line-height:1.62; margin:0 0 22px; }
-
-  .hero-stats{ display:flex; gap:30px; flex-wrap:wrap; }
-  .hstat{ display:flex; flex-direction:column; }
-  .hstat .num{ font-family:'Roboto Mono', monospace; font-size:20px; font-weight:500; }
-  .hstat .label{ font-size:11.5px; color:var(--text-faint); text-transform:uppercase; letter-spacing:.05em; margin-top:2px; }
-
-  /* ================= Control bar (compact search + chips) ================= */
-  .control-bar{ display:flex; align-items:center; gap:14px; flex-wrap:wrap; padding:22px 0 30px; border-bottom:1px solid var(--border); margin-bottom:36px; }
-  .search-pill{
-    display:flex; align-items:center; gap:9px;
-    background:var(--surface); border:1px solid var(--border);
-    border-radius:999px; padding:10px 16px;
-    width:100%; max-width:340px;
-    transition:border-color .18s ease, box-shadow .18s ease, background .18s ease;
-  }
-  .search-pill:focus-within{ border-color:var(--blue); background:var(--surface-raised); box-shadow:0 0 0 4px color-mix(in srgb, var(--blue) 14%, transparent); }
-  .search-pill svg{ width:16px; height:16px; color:var(--text-faint); flex-shrink:0; }
-  .search-pill input{ border:none; outline:none; background:transparent; font-family:'Roboto', sans-serif; font-size:14px; color:var(--text); width:100%; }
-  .search-pill input::placeholder{ color:var(--text-faint); }
-  .search-pill .kbd{ font-family:'Roboto Mono', monospace; font-size:11px; color:var(--text-faint); border:1px solid var(--border); border-radius:5px; padding:1.5px 5px; flex-shrink:0; }
-
-  .chips{ display:flex; gap:8px; flex-wrap:wrap; }
-  .chip{
-    font-size:12.5px; font-weight:500; color:var(--text-muted);
-    background:var(--surface); border:1px solid var(--border);
-    padding:7px 13px; border-radius:999px; cursor:pointer;
-    transition:all .16s var(--ease);
-    display:flex; align-items:center; gap:6px;
-  }
-  .chip .dot{ width:6px; height:6px; border-radius:50%; }
-  .chip:hover{ border-color:var(--text-faint); color:var(--text); }
-  .chip.active{ background:var(--text); color:var(--bg); border-color:var(--text); }
-  .chip.active .dot{ background:var(--bg) !important; }
-
-  .search-meta{ font-size:12px; color:var(--text-faint); font-family:'Roboto Mono', monospace; margin:-22px 0 24px; min-height:16px; }
-
-  /* ================= Units & chapters ================= */
-  .unit-block{ padding-bottom:46px; }
-  .unit-head{ display:flex; align-items:center; gap:12px; margin-bottom:18px; }
-  .unit-head .dot{ width:8px; height:8px; border-radius:50%; flex-shrink:0; }
-  .unit-head h2{ font-size:19px; font-weight:700; margin:0; letter-spacing:-.2px; }
-  .unit-line{ flex:1; height:1px; background:var(--border); }
-  .unit-head .unit-count{ font-size:12px; color:var(--text-faint); font-family:'Roboto Mono', monospace; }
-
-  .chapter-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:14px; }
-  @media (max-width:900px){ .chapter-grid{ grid-template-columns:repeat(2, 1fr); } }
-  @media (max-width:560px){ .chapter-grid{ grid-template-columns:1fr; } .hero-row{ gap:16px; } .orbit{ width:52px; height:52px; } .orbit svg{ width:52px; height:52px; } }
-
-  .chapter-card{
-    display:flex; align-items:center; gap:14px;
-    background:var(--surface-raised);
-    border:1px solid var(--border);
-    border-radius:var(--radius-md);
-    padding:15px 16px;
-    box-shadow:var(--shadow-1);
-    position:relative;
-    transition:transform .22s var(--ease), box-shadow .22s var(--ease), border-color .22s var(--ease);
-  }
-  .chapter-card::before{ content:""; position:absolute; left:0; top:14px; bottom:14px; width:3px; border-radius:3px; background:var(--accent); opacity:.85; }
-  .chapter-card:hover{ transform:translateY(-3px); box-shadow:var(--shadow-3), 0 0 0 1px var(--accent); border-color:transparent; }
-  .chapter-card:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; }
-
-  .chapter-num{
-    flex-shrink:0; margin-left:6px;
-    width:32px; height:32px; border-radius:9px;
-    background:var(--accent-tint); color:var(--accent);
-    display:flex; align-items:center; justify-content:center;
-    font-family:'Roboto Mono', monospace; font-size:12.5px; font-weight:500;
-  }
-  .chapter-text{ flex-grow:1; min-width:0; }
-  .chapter-text h3{ font-size:14px; font-weight:500; margin:0; line-height:1.35; }
-  .chapter-arrow{ flex-shrink:0; color:var(--text-faint); transition:transform .18s var(--ease), color .18s var(--ease); }
-  .chapter-arrow svg{ width:15px; height:15px; }
-  .chapter-card:hover .chapter-arrow{ transform:translateX(3px); color:var(--accent); }
-
-  .empty-state{ display:none; text-align:center; padding:70px 20px; color:var(--text-muted); }
-  .empty-state.show{ display:flex; flex-direction:column; align-items:center; gap:14px; }
-  .empty-state svg{ width:34px; height:34px; color:var(--text-faint); }
-  .empty-state p{ margin:0; font-size:14.5px; }
-
-  footer{ border-top:1px solid var(--border); padding:30px 0 40px; margin-top:10px; }
-  .footer-inner{ display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; }
-  .footer-inner p{ margin:0; font-size:13px; color:var(--text-muted); }
-</style>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
 </head>
+
 <body>
 
-<header>
-  <div class="wrap header-inner">
-    <a href="../index.html" class="brand" aria-label="Prep Portal home">
-      <span class="brand-dots" aria-hidden="true"><span></span><span></span><span></span><span></span></span>
-      <span class="brand-name">Prep <span class="accent">Portal</span></span>
-    </a>
-    <nav>
-      <a class="navlink" href="../index.html">&larr; All subjects</a>
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
-        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
-      </button>
-    </nav>
-  </div>
-</header>
+    <!-- Animated Background -->
+    <div class="background">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
 
-<main>
-  <div class="hero-shell">
-    <div class="hero-glow" aria-hidden="true"></div>
-    <section class="wrap hero">
-      <div class="breadcrumb">
-        <a href="../index.html">Prep Portal</a>
-        <span>/</span>
-        <span>Physics</span>
-      </div>
+    <!-- Header -->
+    <header>
 
-      <div class="hero-row">
-        <div class="orbit" aria-hidden="true">
-          <svg viewBox="0 0 64 64">
-            <circle class="ring" cx="32" cy="32" r="22"/>
-            <ellipse class="ring" cx="32" cy="32" rx="24" ry="10"/>
-            <ellipse class="ring" cx="32" cy="32" rx="24" ry="10" transform="rotate(60 32 32)"/>
-            <ellipse class="ring" cx="32" cy="32" rx="24" ry="10" transform="rotate(120 32 32)"/>
-            <circle class="nucleus" cx="32" cy="32" r="3.4"/>
-            <g class="orbit-dot"><circle cx="56" cy="32" r="2.6" fill="#EA4335"/></g>
-          </svg>
+        <div class="logo">
+            <i class="fa-solid fa-atom"></i>
+            <h2>Physics</h2>
         </div>
-        <div>
-          <h1 class="page-title">Physics</h1>
-          <p class="page-sub">The complete JEE Mains, JEE Advanced &amp; WBJEE 2027 syllabus — mapped unit by unit. Open any chapter for revision notes, formulas, exam patterns and common mistakes.</p>
-          <div class="hero-stats">
-            <div class="hstat"><span class="num" id="statChapters">—</span><span class="label">Chapters</span></div>
-            <div class="hstat"><span class="num" id="statUnits">—</span><span class="label">Units</span></div>
-            <div class="hstat"><span class="num">03</span><span class="label">Exams covered</span></div>
-          </div>
-        </div>
-      </div>
+
+        <button id="themeToggle">
+            <i class="fa-solid fa-moon"></i>
+        </button>
+
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+
+        <h1>Master Physics</h1>
+
+        <p>
+            Complete JEE & WBJEE Physics Notes,
+            Concepts, Formulae and Practice Topics
+            in one place.
+        </p>
+
     </section>
-  </div>
 
-  <section class="wrap">
-    <div class="control-bar">
-      <div class="search-pill">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-        <input type="text" id="searchInput" placeholder="Search chapters..." aria-label="Search Physics chapters">
-        <span class="kbd">/</span>
-      </div>
-      <div class="chips" id="chipsRow"></div>
-    </div>
-    <p class="search-meta" id="searchMeta"></p>
+    <!-- Search -->
 
-    <div id="unitsContainer"></div>
+    <section class="search-section">
 
-    <div class="empty-state" id="emptyState">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-      <p>No chapter matches that search.</p>
-    </div>
-  </section>
-</main>
+        <div class="search-box">
 
-<footer>
-  <div class="wrap footer-inner">
-    <p>Built by Srijan · Prep Portal, 2026</p>
-    <p class="mono" id="chapterCount"></p>
-  </div>
-</footer>
+            <i class="fa-solid fa-magnifying-glass"></i>
 
-<script>
-  (function(){
-    var root = document.documentElement;
-    var toggle = document.getElementById('themeToggle');
-    var saved = localStorage.getItem('prep-portal-theme');
-    var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    var theme = saved || (prefersDark ? 'dark' : 'light');
-    root.setAttribute('data-theme', theme);
-    toggle.addEventListener('click', function(){
-      var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-      root.setAttribute('data-theme', next);
-      localStorage.setItem('prep-portal-theme', next);
-    });
-  })();
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search Physics Topic..."
+            >
 
-  /* ---------------------------------------------------------------------
-     CHAPTER LIST — the only thing you need to touch to add a chapter.
-     Copy one line, change unit / title / file. "file" is the filename
-     that will sit next to this page inside /physics/, e.g. kinematics1.html
-  --------------------------------------------------------------------- */
-  var UNITS = [
-    { name: "Mechanics",             color: "blue"   },
-    { name: "Thermal Physics",       color: "red"    },
-    { name: "Oscillations & Waves",  color: "yellow" },
-    { name: "Electrodynamics",       color: "green"  },
-    { name: "Optics",                color: "blue"   },
-    { name: "Modern Physics",        color: "red"    }
-  ];
+        </div>
 
-  var chapters = [
-    { unit: "Mechanics", title: "Units &amp; Measurements", file: "units-measurements.html" },
-    { unit: "Mechanics", title: "Kinematics — Part 1: Motion in 1D", file: "kinematics_1D_P1V1.html" },
-    { unit: "Mechanics", title: "Kinematics — Part 2: Relative Motion", file: "kinematics2.html" },
-    { unit: "Mechanics", title: "Kinematics — Part 3: Motion in 2D &amp; Projectiles", file: "kinematics3.html" },
-    { unit: "Mechanics", title: "Newton's Laws of Motion", file: "laws-of-motion.html" },
-    { unit: "Mechanics", title: "Work, Energy &amp; Power", file: "work-energy-power.html" },
-    { unit: "Mechanics", title: "System of Particles &amp; Rotational Motion", file: "rotational-motion.html" },
-    { unit: "Mechanics", title: "Gravitation", file: "gravitation.html" },
-    { unit: "Mechanics", title: "Mechanical Properties of Solids", file: "properties-solids.html" },
-    { unit: "Mechanics", title: "Mechanical Properties of Fluids", file: "properties-fluids.html" },
+    </section>
 
-    { unit: "Thermal Physics", title: "Thermal Properties of Matter", file: "thermal-properties.html" },
-    { unit: "Thermal Physics", title: "Thermodynamics", file: "thermodynamics.html" },
-    { unit: "Thermal Physics", title: "Kinetic Theory of Gases", file: "kinetic-theory.html" },
+    <!-- Statistics -->
 
-    { unit: "Oscillations & Waves", title: "Oscillations (SHM)", file: "oscillations.html" },
-    { unit: "Oscillations & Waves", title: "Waves", file: "waves.html" },
+    <section class="stats">
 
-    { unit: "Electrodynamics", title: "Electrostatics", file: "electrostatics.html" },
-    { unit: "Electrodynamics", title: "Capacitance", file: "capacitance.html" },
-    { unit: "Electrodynamics", title: "Current Electricity", file: "current-electricity.html" },
-    { unit: "Electrodynamics", title: "Moving Charges &amp; Magnetism", file: "magnetism.html" },
-    { unit: "Electrodynamics", title: "Magnetism &amp; Matter", file: "magnetism-matter.html" },
-    { unit: "Electrodynamics", title: "Electromagnetic Induction", file: "emi.html" },
-    { unit: "Electrodynamics", title: "Alternating Current", file: "alternating-current.html" },
-    { unit: "Electrodynamics", title: "Electromagnetic Waves", file: "em-waves.html" },
+        <div class="glass stat-card">
 
-    { unit: "Optics", title: "Ray Optics &amp; Optical Instruments", file: "ray-optics.html" },
-    { unit: "Optics", title: "Wave Optics", file: "wave-optics.html" },
+            <h2 id="topicCount">
+                0
+            </h2>
 
-    { unit: "Modern Physics", title: "Dual Nature of Radiation &amp; Matter", file: "dual-nature.html" },
-    { unit: "Modern Physics", title: "Atoms", file: "atoms.html" },
-    { unit: "Modern Physics", title: "Nuclei", file: "nuclei.html" },
-    { unit: "Modern Physics", title: "Semiconductor Electronics", file: "semiconductors.html" },
-    { unit: "Modern Physics", title: "Communication Systems", file: "communication-systems.html" }
-  ];
+            <p>Topics Available</p>
 
-  var colorVar = { blue: "--blue", red: "--red", yellow: "--yellow", green: "--green" };
-  var tintVar  = { blue: "--blue-tint", red: "--red-tint", yellow: "--yellow-tint", green: "--green-tint" };
+        </div>
 
-  var container   = document.getElementById('unitsContainer');
-  var emptyState  = document.getElementById('emptyState');
-  var searchInput = document.getElementById('searchInput');
-  var searchMeta  = document.getElementById('searchMeta');
-  var chipsRow    = document.getElementById('chipsRow');
-  var chapterCount = document.getElementById('chapterCount');
+    </section>
 
-  docum
+    <!-- Topics -->
+
+    <main>
+
+        <div id="topicContainer"
+             class="topic-grid">
+
+            <!-- JavaScript will generate cards here -->
+
+        </div>
+
+    </main>
+
+    <!-- Floating Button -->
+
+    <button id="scrollTop">
+
+        <i class="fa-solid fa-arrow-up"></i>
+
+    </button>
+
+    <!-- Footer -->
+
+    <footer>
+
+        <h3>Physics Learning Portal</h3>
+
+        <p>
+            Learn • Practice • Revise
+        </p>
+
+        <p class="copyright">
+
+            © 2026
+
+        </p>
+
+    </footer>
+
+    <script src="physics.js"></script>
+
+</body>
+</html>
